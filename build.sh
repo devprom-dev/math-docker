@@ -20,8 +20,8 @@ RUN cd /var/www/devprom/htdocs && \
   
 #
 RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
-COPY apache2/devprom.conf /etc/apache2/sites-available/
-RUN a2ensite devprom.conf
+COPY apache2/math.conf /etc/apache2/sites-available/
+RUN a2ensite math.conf
 
 CMD ( set -e && \
   export APACHE_RUN_USER=www-data && export APACHE_RUN_GROUP=www-data && export APACHE_PID_FILE=/var/run/apache2/.pid && \
