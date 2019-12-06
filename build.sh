@@ -27,6 +27,7 @@ RUN mkdir /var/log/devprom && \
 RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
 COPY apache2/math.conf /etc/apache2/sites-available/
 RUN a2ensite math.conf
+RUN a2enmod rewrite
 
 CMD ( set -e && \
   export APACHE_RUN_USER=www-data && export APACHE_RUN_GROUP=www-data && export APACHE_PID_FILE=/var/run/apache2/.pid && \
