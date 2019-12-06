@@ -19,6 +19,10 @@ RUN cd /var/www/devprom/htdocs && \
   chmod -R 775 * && \
   chown -R www-data:www-data *
 
+RUN mkdir /var/log/devprom && \
+  chmod -R 775 /var/log/devprom && \
+  chown -R www-data:www-data /var/log/devprom
+
 #
 RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
 COPY apache2/math.conf /etc/apache2/sites-available/
