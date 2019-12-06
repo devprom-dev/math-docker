@@ -7,11 +7,6 @@ MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 RUN apt-get -y update && apt-get -y install apache2 xvfb phantomjs unzip wget \
   php libapache2-mod-php php-gd php-common php-curl php-xml php-mbstring php-imagick
 
-RUN mkdir -p /var/www/devprom && \
-  wget -O /var/www/devprom/master.zip https://github.com/devprom-dev/math-server/archive/master.zip && \
-  unzip /var/www/devprom/master.zip -d /var/www/devprom/ && \
-  mv /var/www/devprom/math-server-master /var/www/devprom/htdocs
-
 RUN apt-get install -qy \ 
     ca-certificates \
     bzip2 \
@@ -22,7 +17,12 @@ RUN apt-get install -qy \
     && bzip2 -d ./phantom.tar.bz2 \
     && tar -xvf ./phantom.tar -C /usr/local/ --strip-components=1 \
     && rm phantom.tar
-    
+
+RUN mkdir  -p /var/www/devprom && \
+  wget -O /var/www/devprom/master.zip https://github.com/devprom-dev/math-server/archive/master.zip && \
+  unzip /var/www/devprom/master.zip -d /var/www/devprom/ && \
+  mv /var/www/devprom/math-server-master /var/www/devprom/htdocs
+
 RUN cd /var/www/devprom/htdocs && \
   apt-get -y install curl && \
   curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
