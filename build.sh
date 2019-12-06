@@ -12,7 +12,7 @@ RUN mkdir -p /var/www/devprom && \
   unzip /var/www/devprom/master.zip -d /var/www/devprom/ && \
   mv /var/www/devprom/math-server-master /var/www/devprom/htdocs
 
-RUN -get install -qy \ 
+RUN apt-get install -qy \ 
     ca-certificates \
     bzip2 \
     curl \
