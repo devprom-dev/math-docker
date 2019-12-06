@@ -12,7 +12,7 @@ RUN mkdir -p /var/www/devprom && \
   unzip /var/www/devprom/master.zip -d /var/www/devprom/ && \
   mv /var/www/devprom/math-server-master /var/www/devprom/htdocs
 
-RUN apt-get install phantomjs 
+RUN apt-get -y install phantomjs 
 
 RUN cd /var/www/devprom/htdocs && \
   apt-get -y install curl && \
