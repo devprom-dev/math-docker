@@ -5,18 +5,7 @@ MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 
 #
 RUN apt-get -y update && apt-get -y install apache2 xvfb phantomjs unzip wget \
-  php libapache2-mod-php php-gd php-common php-curl php-xml php-mbstring php-imagick
-
-RUN apt-get install -qy \ 
-    ca-certificates \
-    bzip2 \
-    curl \
-    libfontconfig \
-    --no-install-recommends \
-    && curl -SL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 > phantom.tar.bz2 \
-    && bzip2 -d ./phantom.tar.bz2 \
-    && tar -xvf ./phantom.tar -C /usr/local/ --strip-components=1 \
-    && rm phantom.tar
+  php libapache2-mod-php php-gd php-common php-curl php-xml php-mbstring php-imagick ca-certificates curl bzip2
 
 RUN mkdir  -p /var/www/devprom && \
   wget -O /var/www/devprom/master.zip https://github.com/devprom-dev/math-server/archive/master.zip && \
